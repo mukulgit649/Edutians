@@ -8,6 +8,15 @@ const Navbar: React.FC = () => {
   const { user } = useAuth();
   const [isProfileOpen, setIsProfileOpen] = useState(false);
   const [isLoginModalOpen, setIsLoginModalOpen] = useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+
+  const toggleMobileMenu = () => {
+    setIsMobileMenuOpen(!isMobileMenuOpen);
+  };
+
+  const closeMobileMenu = () => {
+    setIsMobileMenuOpen(false);
+  };
 
   return (
     <nav className="fixed w-full z-50 bg-[#151c2c]/80 backdrop-blur-md border-b border-gray-700">
@@ -18,7 +27,7 @@ const Navbar: React.FC = () => {
             <span className="text-2xl font-bold text-white">Edutians</span>
           </Link>
 
-          {/* Navigation Links */}
+          {/* Navigation Links - Desktop */}
           <div className="hidden md:flex items-center space-x-8">
             <Link to="/courses" className="text-gray-200 hover:text-cyan-400 transition-colors">
               Courses
@@ -55,7 +64,7 @@ const Navbar: React.FC = () => {
                   alt="Profile"
                   className="w-8 h-8 rounded-full"
                 />
-                <span>{user.displayName}</span>
+                <span className="hidden md:inline">{user.displayName}</span>
               </button>
             ) : (
               <button
@@ -65,7 +74,88 @@ const Navbar: React.FC = () => {
                 Get Started
               </button>
             )}
+
+            {/* Mobile Menu Button */}
+            <button
+              onClick={toggleMobileMenu}
+              className="md:hidden text-gray-200 hover:text-cyan-400 focus:outline-none"
+            >
+              <svg
+                className="h-6 w-6"
+                fill="none"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                {isMobileMenuOpen ? (
+                  <path d="M6 18L18 6M6 6l12 12" />
+                ) : (
+                  <path d="M4 6h16M4 12h16M4 18h16" />
+                )}
+              </svg>
+            </button>
           </div>
+        </div>
+      </div>
+
+      {/* Mobile Menu */}
+      <div
+        className={`md:hidden fixed inset-0 bg-[#151c2c]/95 backdrop-blur-md z-40 transform transition-transform duration-300 ease-in-out ${
+          isMobileMenuOpen ? 'translate-x-0' : 'translate-x-full'
+        }`}
+      >
+        <div className="flex flex-col items-center justify-center h-full space-y-8">
+          <Link
+            to="/courses"
+            className="text-gray-200 hover:text-cyan-400 transition-colors text-xl"
+            onClick={closeMobileMenu}
+          >
+            Courses
+          </Link>
+          <Link
+            to="/about"
+            className="text-gray-200 hover:text-cyan-400 transition-colors text-xl"
+            onClick={closeMobileMenu}
+          >
+            About
+          </Link>
+          <Link
+            to="/features"
+            className="text-gray-200 hover:text-cyan-400 transition-colors text-xl"
+            onClick={closeMobileMenu}
+          >
+            Features
+          </Link>
+          <Link
+            to="/community"
+            className="text-gray-200 hover:text-cyan-400 transition-colors text-xl"
+            onClick={closeMobileMenu}
+          >
+            Community
+          </Link>
+          <Link
+            to="/resources"
+            className="text-gray-200 hover:text-cyan-400 transition-colors text-xl"
+            onClick={closeMobileMenu}
+          >
+            Resources
+          </Link>
+          <Link
+            to="/competitive-exams"
+            className="text-gray-200 hover:text-cyan-400 transition-colors text-xl"
+            onClick={closeMobileMenu}
+          >
+            Competitive Exams
+          </Link>
+          <Link
+            to="/career-guidance"
+            className="text-gray-200 hover:text-cyan-400 transition-colors text-xl"
+            onClick={closeMobileMenu}
+          >
+            Career Guidance
+          </Link>
         </div>
       </div>
 
