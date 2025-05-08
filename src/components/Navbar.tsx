@@ -100,64 +100,61 @@ const Navbar: React.FC = () => {
         </div>
       </div>
 
-      {/* Mobile Menu */}
+      {/* Mobile Sidebar Menu */}
+      {/* Overlay */}
       <div
-        className={`md:hidden fixed inset-0 bg-[#151c2c]/95 backdrop-blur-md z-40 transform transition-transform duration-300 ease-in-out ${
-          isMobileMenuOpen ? 'translate-x-0' : 'translate-x-full'
-        }`}
+        className={`md:hidden fixed inset-0 z-40 transition-opacity duration-300 ${isMobileMenuOpen ? 'bg-black/60 pointer-events-auto opacity-100' : 'opacity-0 pointer-events-none'}`}
+        onClick={closeMobileMenu}
+        aria-hidden="true"
+      />
+      {/* Sidebar */}
+      <aside
+        className={`md:hidden fixed top-0 left-0 h-full w-64 bg-[#151c2c] shadow-lg z-50 transform transition-transform duration-300 ease-in-out flex flex-col justify-between ${isMobileMenuOpen ? 'translate-x-0' : '-translate-x-full'}`}
+        style={{ minWidth: '240px' }}
       >
-        <div className="flex flex-col items-center justify-center h-full space-y-8">
-          <Link
-            to="/courses"
-            className="text-gray-200 hover:text-cyan-400 transition-colors text-xl"
+        <div className="flex flex-col space-y-2 pt-8 px-6">
+          <button
+            className="self-end mb-6 text-gray-400 hover:text-cyan-400 focus:outline-none"
             onClick={closeMobileMenu}
+            aria-label="Close menu"
           >
-            Courses
-          </Link>
-          <Link
-            to="/about"
-            className="text-gray-200 hover:text-cyan-400 transition-colors text-xl"
-            onClick={closeMobileMenu}
-          >
-            About
-          </Link>
-          <Link
-            to="/features"
-            className="text-gray-200 hover:text-cyan-400 transition-colors text-xl"
-            onClick={closeMobileMenu}
-          >
-            Features
-          </Link>
-          <Link
-            to="/community"
-            className="text-gray-200 hover:text-cyan-400 transition-colors text-xl"
-            onClick={closeMobileMenu}
-          >
-            Community
-          </Link>
-          <Link
-            to="/resources"
-            className="text-gray-200 hover:text-cyan-400 transition-colors text-xl"
-            onClick={closeMobileMenu}
-          >
-            Resources
-          </Link>
-          <Link
-            to="/competitive-exams"
-            className="text-gray-200 hover:text-cyan-400 transition-colors text-xl"
-            onClick={closeMobileMenu}
-          >
-            Competitive Exams
-          </Link>
-          <Link
-            to="/career-guidance"
-            className="text-gray-200 hover:text-cyan-400 transition-colors text-xl"
-            onClick={closeMobileMenu}
-          >
-            Career Guidance
-          </Link>
+            <svg className="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
+              <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
+            </svg>
+          </button>
+          <Link to="/" className="text-gray-200 hover:text-cyan-400 text-lg font-semibold py-2 px-2 rounded transition-colors" onClick={closeMobileMenu}>Home</Link>
+          <Link to="/courses" className="text-gray-200 hover:text-cyan-400 text-lg py-2 px-2 rounded transition-colors" onClick={closeMobileMenu}>Courses</Link>
+          <Link to="/features" className="text-gray-200 hover:text-cyan-400 text-lg py-2 px-2 rounded transition-colors" onClick={closeMobileMenu}>Features</Link>
+          <Link to="/about" className="text-gray-200 hover:text-cyan-400 text-lg py-2 px-2 rounded transition-colors" onClick={closeMobileMenu}>About</Link>
+          <Link to="/community" className="text-gray-200 hover:text-cyan-400 text-lg py-2 px-2 rounded transition-colors" onClick={closeMobileMenu}>Community</Link>
+          <Link to="/resources" className="text-gray-200 hover:text-cyan-400 text-lg py-2 px-2 rounded transition-colors" onClick={closeMobileMenu}>Resources</Link>
+          <Link to="/competitive-exams" className="text-gray-200 hover:text-cyan-400 text-lg py-2 px-2 rounded transition-colors" onClick={closeMobileMenu}>Competitive Exams</Link>
+          <Link to="/career-guidance" className="text-gray-200 hover:text-cyan-400 text-lg py-2 px-2 rounded transition-colors" onClick={closeMobileMenu}>Career Guidance</Link>
+          <Link to="/motivation" className="text-gray-200 hover:text-cyan-400 text-lg py-2 px-2 rounded transition-colors" onClick={closeMobileMenu}>Motivation</Link>
         </div>
-      </div>
+        <div className="p-6 border-t border-gray-700">
+          {user ? (
+            <button
+              onClick={() => { setIsProfileOpen(true); closeMobileMenu(); }}
+              className="flex items-center space-x-3 w-full text-left text-gray-200 hover:text-cyan-400 transition-colors"
+            >
+              <img
+                src={user.photoURL || 'https://via.placeholder.com/32'}
+                alt="Profile"
+                className="w-8 h-8 rounded-full"
+              />
+              <span>{user.displayName}</span>
+            </button>
+          ) : (
+            <button
+              onClick={() => { setIsLoginModalOpen(true); closeMobileMenu(); }}
+              className="w-full bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg transition-colors"
+            >
+              Get Started
+            </button>
+          )}
+        </div>
+      </aside>
 
       {/* User Profile Modal */}
       <UserProfile
