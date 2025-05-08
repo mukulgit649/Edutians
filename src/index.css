@@ -1,0 +1,212 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@400;500;600;700;800&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-background-dark text-text-light dark:bg-background-dark dark:text-text-dark transition-colors duration-200;
+  }
+
+  :root {
+    --primary: #4f46e5;
+    --primary-dark: #4338ca;
+    --accent: #06d6a0;
+    --accent-dark: #06d6a0;
+  }
+}
+
+.animated-background {
+  background-size: 20px 20px;
+  animation: slide 20s linear infinite;
+  @apply bg-gradient-dots opacity-10 dark:opacity-5;
+}
+
+@keyframes slide {
+  from {
+    background-position: 0 0;
+  }
+  to {
+    background-position: 40px 40px;
+  }
+}
+
+.gradient-text {
+  @apply bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-green-400;
+}
+
+@layer components {
+  .btn-primary {
+    @apply bg-blue-600 text-white px-6 py-3 rounded-lg font-medium hover:bg-blue-700 transition-all duration-200;
+  }
+  
+  .btn-secondary {
+    @apply bg-cyan-500 text-white px-6 py-3 rounded-lg font-medium hover:bg-green-400 transition-all duration-200;
+  }
+  
+  .section-title {
+    @apply text-4xl font-bold font-poppins text-center mb-8 dark:text-text-dark;
+  }
+  
+  .feature-card {
+    @apply bg-background-dark/80 dark:bg-background-dark/80 p-6 rounded-xl shadow-lg hover:shadow-xl transition-all duration-200 border border-transparent dark:border-gray-700;
+  }
+
+  .floating-element {
+    @apply animate-float;
+  }
+
+  .glass-effect {
+    @apply backdrop-blur-md bg-white/30 dark:bg-black/30;
+  }
+
+  .gradient-border {
+    @apply relative;
+  }
+
+  .gradient-border::before {
+    content: '';
+    @apply absolute inset-0 rounded-xl bg-gradient-to-r from-blue-500 to-green-400 -z-10 blur opacity-50;
+  }
+
+  .gradient-text {
+    @apply bg-gradient-to-r from-blue-500 to-green-400 bg-clip-text text-transparent;
+  }
+
+  .animate-fade-in {
+    animation: fadeIn 1s ease-in-out;
+  }
+
+  .animate-slide-up {
+    animation: slideUp 0.8s ease-out;
+  }
+
+  .animate-slide-in {
+    animation: slideIn 0.8s ease-out;
+  }
+
+  .animate-float {
+    animation: float 3s ease-in-out infinite;
+  }
+
+  .animate-pulse-slow {
+    animation: pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  }
+
+  .animate-typing {
+    animation: typing 3.5s steps(40, end);
+  }
+
+  .animate-blink {
+    animation: blink 0.75s step-end infinite;
+  }
+}
+
+@layer utilities {
+  .animate-glow {
+    animation: glow 2s ease-in-out infinite;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateX(-20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes float {
+  0% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+@keyframes typing {
+  from {
+    width: 0;
+  }
+  to {
+    width: 100%;
+  }
+}
+
+@keyframes blink {
+  from, to {
+    border-color: transparent;
+  }
+  50% {
+    border-color: currentColor;
+  }
+}
+
+@keyframes glow {
+  0% {
+    opacity: 0.5;
+    box-shadow: 0 0 5px var(--primary), 0 0 10px var(--primary);
+  }
+  50% {
+    opacity: 1;
+    box-shadow: 0 0 10px var(--primary), 0 0 20px var(--primary);
+  }
+  100% {
+    opacity: 0.5;
+    box-shadow: 0 0 5px var(--primary), 0 0 10px var(--primary);
+  }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-gray-900;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-gray-700 rounded-full;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  @apply bg-gray-600;
+} 
