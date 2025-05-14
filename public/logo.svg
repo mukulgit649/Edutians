@@ -1,14 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg width="512" height="512" viewBox="0 0 512 512" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <rect width="512" height="512" rx="128" fill="url(#gradient)" />
-  <path d="M156 256C156 200.772 200.772 156 256 156C311.228 156 356 200.772 356 256C356 311.228 311.228 356 256 356C200.772 356 156 311.228 156 256Z" fill="white" fill-opacity="0.1"/>
-  <path d="M206 236C206 213.909 223.909 196 246 196H266C288.091 196 306 213.909 306 236V276C306 298.091 288.091 316 266 316H246C223.909 316 206 298.091 206 276V236Z" fill="white"/>
-  <path d="M246 246H266V266H246V246Z" fill="url(#gradient)"/>
+<svg width="512" height="512" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
   <defs>
-    <linearGradient id="gradient" x1="0" y1="0" x2="512" y2="512" gradientUnits="userSpaceOnUse">
-      <stop offset="0%" stop-color="#5C67F2"/>
-      <stop offset="50%" stop-color="#7C3AED"/>
-      <stop offset="100%" stop-color="#2563EB"/>
+    <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#7F5FFF;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#5F8CFF;stop-opacity:1" />
     </linearGradient>
   </defs>
+  <!-- Book base -->
+  <rect x="20" y="30" width="60" height="40" rx="8" fill="url(#grad1)" />
+  <!-- Book spine -->
+  <rect x="45" y="30" width="10" height="40" rx="2" fill="#fff" opacity="0.2"/>
+  <!-- Brain (stylized) -->
+  <path d="M50 40
+           Q55 35, 60 40
+           Q65 45, 60 50
+           Q65 55, 60 60
+           Q55 65, 50 60
+           Q45 65, 40 60
+           Q35 55, 40 50
+           Q35 45, 40 40
+           Q45 35, 50 40
+           Z"
+        fill="#fff" opacity="0.8"/>
 </svg> 
