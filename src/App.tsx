@@ -17,6 +17,8 @@ import CareerGuidance from './pages/CareerGuidance';
 import CompetitiveExams from './pages/CompetitiveExams';
 import Dashboard from './pages/Dashboard';
 import CourseDetails from './pages/CourseDetails';
+import AIFeatures from './components/AIFeatures';
+import WellnessComponent from './components/WellnessComponent';
 
 const App: React.FC = () => {
   return (
@@ -40,6 +42,8 @@ const App: React.FC = () => {
               <Route path="/competitive-exams" element={<CompetitiveExams />} />
               <Route path="/dashboard" element={<Dashboard />} />
               <Route path="/course-details/:courseId" element={<CourseDetails />} />
+              <Route path="/ai-features" element={<AIFeatures />} />
+              <Route path="/wellness" element={<WellnessComponent />} />
             </Routes>
           </div>
           <Footer />

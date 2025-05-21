@@ -130,8 +130,16 @@ const Home: React.FC = () => {
           transition={{ duration: 0.8 }}
           className="text-center relative z-10 flex flex-col justify-center items-center w-full"
         >
-          <h1 className="text-4xl sm:text-6xl md:text-7xl font-poppins font-extrabold tracking-tight bg-gradient-to-r from-blue-500 via-cyan-400 to-green-400 bg-clip-text text-transparent drop-shadow-lg mb-6" style={{textShadow: '0 4px 24px rgba(0,0,0,0.18)'}}>
-            WELCOME TO EDUTIANS
+          <h1 className="text-4xl sm:text-6xl md:text-7xl font-black tracking-wider bg-gradient-to-r from-blue-500 via-cyan-400 to-green-400 bg-clip-text text-transparent drop-shadow-lg mb-6 animate-gradient" style={{
+            textShadow: '0 4px 24px rgba(0,0,0,0.18)',
+            fontFamily: "'Montserrat', sans-serif",
+            letterSpacing: '0.1em',
+            fontWeight: 900,
+            backgroundSize: '200% auto',
+            animation: 'gradient 8s linear infinite',
+            textTransform: 'uppercase'
+          }}>
+            Welcome to Edutians
           </h1>
           <p className="text-2xl sm:text-3xl text-gray-300 mb-10">Your AI-Powered Learning Journey Starts Here</p>
           <div className="flex flex-col sm:flex-row justify-center items-center gap-6 mt-2">
